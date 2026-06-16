@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050914;
+  --foreground: #e8edf7;
+  --muted: #9eadc7;
+  --card: rgba(255, 255, 255, 0.04);
+  --stroke: rgba(255, 255, 255, 0.08);
+  --accent: #7ee0c9;
+  --accent-strong: #5dd0ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at 20% 20%, #0e1c3f 0, transparent 30%),
+    radial-gradient(circle at 80% 0%, #11305b 0, transparent 28%),
+    radial-gradient(circle at 70% 70%, #0c2633 0, transparent 40%),
+    #050914;
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), "Inter", system-ui, -apple-system,
+    sans-serif;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(126, 224, 201, 0.24);
+  color: var(--foreground);
+}
+
+@media print {
+  /* Reset dark theme to clean white */
+  *,
+  *::before,
+  *::after {
+    background: white !important;
+    color: #111 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  body {
+    background: white !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* Bold name */
+  #resume-name {
+    font-weight: 700 !important;
+    font-size: 18pt !important;
+  }
+
+  /* Use native list bullets instead of custom dot spans */
+  li > span:first-child {
+    display: none !important;
+  }
+
+  ul {
+    list-style: disc !important;
+    padding-left: 1.2em !important;
+  }
+
+  li {
+    display: list-item !important;
+  }
+
+  /* Normalise oversized text to body size */
+  [class*="text-lg"],
+  [class*="text-xl"],
+  [class*="text-2xl"],
+  [class*="text-3xl"],
+  [class*="text-4xl"] {
+    font-size: 11pt !important;
+    font-weight: normal !important;
+  }
+
+  /* Hide decorative blobs, back button, and avatar */
+  .pointer-events-none,
+  header a[href="/"],
+  #resume-avatar {
+    display: none !important;
+  }
+
+  /* Remove all card boxes */
+  section,
+  article,
+  div[class*="rounded"] {
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #resume-projects {
+    margin-top: 1.5rem !important;
+  }
+
+  /* Certifications — 2 column grid */
+  #resume-certifications > div:last-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.4rem !important;
+  }
+
+  /* Skill chips */
+  #resume-skills span {
+    border: 1px solid #94a3b8 !important;
+    border-radius: 999px !important;
+    padding: 2px 10px !important;
+    background: #f1f5f9 !important;
+    color: #1e293b !important;
+    display: inline-block !important;
+    font-size: 9pt !important;
+  }
+
+  /* Accent color for section labels and role text */
+  [class*="text-cyan"],
+  [class*="text-indigo"] {
+    color: #0e7490 !important;
+  }
+
+  [class*="text-slate-400"] {
+    color: #64748b !important;
+  }
+
+  [class*="text-slate-300"],
+  [class*="text-slate-200"] {
+    color: #334155 !important;
+  }
+
+  /* Gradient bars — render as solid lines */
+  [class*="bg-gradient"] {
+    background: #0e7490 !important;
+  }
+
+  /* Avoid page breaks inside job entries */
+  section {
+    break-inside: avoid;
+  }
+
+  /* Download button not useful in print */
+  a[download] {
+    display: none !important;
+  }
+}

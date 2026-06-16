@@ -1,0 +1,82 @@
+---
+title: "Improving Python class efficiency with slots"
+date: "2023-09-10"
+summary: "The benefits of using Python's __slots__ to optimize memory usage and boost performance"
+tags:
+  - Python
+---
+
+If you're a Python developer, optimizing your code's memory usage and performance is crucial. One effective way is leveraging the `__slots__` feature in your classes. This guide covers the advantages and a practical example.
+
+## What is `__slots__`?
+
+Every object from a class has a dictionary that stores its attributes and values. It is flexible but can waste memory when you have many objects. `__slots__` lets you declare which attributes a class can have, allocating a fixed amount of memory and skipping the per-instance dictionary.
+
+## A memory and performance change
+
+By explicitly declaring attributes, `__slots__` reduces overhead and speeds up attribute access. The result is a more efficient program.
+
+### Real-world application: the Point class
+
+Without `__slots__`:
+
+```python
+class Point:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+```
+
+Profiling creation of a million points with `memory_profiler`:
+
+```
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+ 8    21.1 MiB    21.1 MiB           1   @profile()
+ 9    def create_points():
+10   136.0 MiB   114.9 MiB     1000003   return [Point(1, 2, 3) for _ in range(1_000_000)]
+```
+
+With `__slots__`:
+
+```python
+class SlottedPoint:
+    __slots__ = ("x", "y", "z")
+
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+```
+
+Profiling with `__slots__`:
+
+```
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+ 9    21.6 MiB    21.6 MiB           1   @profile()
+10    def create_points():
+11    90.5 MiB    68.9 MiB     1000003   return [Point(1, 2, 3) for _ in range(1_000_000)]
+```
+
+Using `__slots__` lowered the required memory to ~47.3 MiB (an ~49% reduction). Note that `__slots__` limits possible member variables: assigning new attributes beyond those declared raises `AttributeError`.
+
+```python
+point = Point(1, 2, 3)
+point.a = 4        # works
+
+slotted_point = SlottedPoint(1, 2, 3)
+slotted_point.a = 4  # AttributeError
+```
+
+## Benefits of using `__slots__`
+
+- Improved memory usage when you have many instances.
+- Faster attribute access by skipping instance dictionaries.
+- Enforced attribute names, reducing accidental clashes or typos.
+- Clearer documentation of allowed attributes.
+
+## Conclusion
+
+`__slots__` is a practical tool to optimize memory and performance. Use it when you need many lightweight instances and want to balance readability with efficiency.

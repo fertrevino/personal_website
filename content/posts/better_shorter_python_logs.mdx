@@ -1,0 +1,28 @@
+---
+title: "Unusual trick for better Python logs"
+date: "2024-06-18"
+summary: "Hidden in plain sight, a tool for more concise logging."
+tags:
+  - Python
+  - logging
+---
+
+You are probably used to logging variables in Python using string interpolation:
+
+```python
+# Option 1
+logger.info("Request succeeded for url: %s", url)
+
+# Option 2, even better with f-strings
+logger.info(f"Request succeeded for url: {url}")
+```
+
+There is a better option. Python 3.8 introduced *self documenting strings*.
+
+```python
+logger.info(f"Request succeeded for {url=}")
+```
+
+The syntax is `{variable=}` within an f-string. Even though it has been available for a few years, it is uncommon to see it in production code. I believe it is yet to become popular.
+
+That’s it.

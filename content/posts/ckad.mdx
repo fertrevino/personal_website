@@ -1,0 +1,43 @@
+---
+title: "How to prepare for the Certified Kubernetes Application Developer (CKAD) exam"
+date: "2023-10-27"
+summary: "Pass the CKAD certification and don't die trying"
+tags:
+  - Software
+  - Technology
+  - Kubernetes
+---
+
+If you are reading this, you are likely preparing for the CKAD exam. These are the tips I wish I had before taking it.
+
+## Tip 1: It is hands-on
+
+Unlike other industry certifications such as the AWS Solutions Architect Associate, the CKAD focuses on practical exercises. You get access to a remote environment with various Kubernetes contexts that you need to switch between. Get comfortable with the `kubectl` CLI. Your ability to create and troubleshoot Kubernetes deployments matters more than knowing every detail.
+
+## Tip 2: Know the question types
+
+The CKAD has specific question archetypes. Practice the most common ones:
+
+- **Creating a Deployment**: More likely than creating a standalone pod.
+- **Debugging a Deployment**: Check whether requested replicas match available pods, and ensure selector labels align with pod metadata.
+- **Debugging a Service**: Differentiate ClusterIP vs NodePort; verify endpoints with `kubectl get endpoints`; check selectors.
+- **Creating a Network Policy**: Combine ingress/egress rules correctly; syntax can be tricky.
+- **Using a ConfigMap**: Reference values via `valueFrom` and `configMapKeyRef` for env vars.
+- **Mounting Volumes and Using Secrets**: Mount secrets as env vars or volumes; common easy points.
+
+## Tip 3: Focus on speed
+
+Having the right answers is not enough—you must be fast:
+
+- **Touch typing**: The exam is terminal-heavy. Type quickly, but favor copy/paste to avoid typos.
+- **Aliases, short flags, history**: Add `alias k='kubectl'`; use short flags like `-n`; reuse commands with history or reverse search.
+- **Text editing**: Get comfortable with a basic editor (e.g., Vim) for navigation and search.
+- **Linux pipes**: Let the shell work for you. Example: `k -n space get deployments -oyaml | vim --` to inspect resources quickly.
+
+## Tip 4: Skip the course purchase
+
+When you register for the CKAD exam through the Linux Foundation, you get access to an exam-like environment and a demo exam. The questions are well-structured and close to the real difficulty level. Use those before buying extra courses. If time runs out, you can practice the demo questions locally.
+
+## You are all set
+
+I hope these tips help you. Share your achievement after completing the certification. Best of luck!
