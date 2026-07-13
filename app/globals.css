@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #050914;
@@ -151,8 +152,8 @@ a {
     background: #0e7490 !important;
   }
 
-  /* Avoid page breaks inside job entries */
-  section {
+  /* Avoid page breaks inside individual entries, but allow breaks between them */
+  .resume-entry {
     break-inside: avoid;
   }
 

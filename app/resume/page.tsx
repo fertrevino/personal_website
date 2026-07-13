@@ -25,7 +25,7 @@ export default function ResumePage() {
         <div className="absolute left-[8%] bottom-[-8%] h-72 w-72 rounded-full bg-emerald-400/10 blur-[140px]" />
       </div>
 
-      <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-10 md:px-10 lg:px-14">
+      <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-10 md:px-10 lg:px-14">
         {/* Header */}
         <header className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-4">
@@ -35,7 +35,7 @@ export default function ResumePage() {
             <div className="space-y-0.5">
               <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Resume</p>
               <h1 id="resume-name" className="text-2xl font-semibold text-white sm:text-3xl">Fernando Trevino</h1>
-              <p className="text-sm text-slate-400">Bad Nauheim, Germany · fernando.yanez.trevino@gmail.com</p>
+              <p className="text-sm text-slate-400">Frankfurt, Germany · fernando.yanez.trevino@gmail.com</p>
             </div>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -77,7 +77,7 @@ export default function ResumePage() {
               </div>
               <div className="mt-5 flex flex-col gap-8">
                 {experience.map((job) => (
-                  <div key={job.company} className="flex gap-4">
+                  <div key={job.company} className="resume-entry flex gap-4">
                     <div className="mt-1.5 h-full w-0.5 shrink-0 rounded-full bg-gradient-to-b from-cyan-300/60 to-indigo-400/20" />
                     <div className="flex-1">
                       <h3 className="text-base font-semibold text-white">{job.company}</h3>
@@ -105,7 +105,7 @@ export default function ResumePage() {
               </div>
               <div className="mt-5 flex flex-col gap-5">
                 {education.map((ed) => (
-                  <div key={ed.school} className="flex gap-4">
+                  <div key={ed.school} className="resume-entry flex gap-4">
                     <div className="mt-1.5 h-full w-0.5 shrink-0 rounded-full bg-gradient-to-b from-indigo-400/60 to-cyan-300/20" />
                     <div>
                       <h3 className="text-base font-semibold text-white">{ed.school}</h3>
@@ -148,7 +148,7 @@ export default function ResumePage() {
               </div>
               <div className="mt-4 flex flex-col gap-3">
                 {certifications.map((c) => (
-                  <div key={c.name} className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
+                  <div key={c.name} className="resume-entry rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
                     <p className="text-xs font-semibold text-white">{c.name}</p>
                     <p className="text-[11px] text-slate-400">{c.issuer} · {c.date}</p>
                   </div>
@@ -183,7 +183,7 @@ export default function ResumePage() {
               </div>
               <div className="mt-4 flex flex-col gap-3">
                 {awards.map((a) => (
-                  <div key={a.name} className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
+                  <div key={a.name} className="resume-entry rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
                     <p className="text-xs font-semibold text-white">{a.name}</p>
                     <p className="text-[11px] text-slate-400">{a.org} · {a.date}</p>
                     <p className="mt-1 text-[11px] text-slate-300">{a.detail}</p>
@@ -202,7 +202,7 @@ export default function ResumePage() {
           </div>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
             {projects.map((p) => (
-              <div key={p.name} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+              <div key={p.name} className="resume-entry rounded-2xl border border-white/10 bg-white/[0.04] p-4">
                 <p className="text-sm font-semibold text-white">{p.name}</p>
                 <p className="text-xs text-cyan-300">{p.type}</p>
                 <p className="mt-0.5 text-xs text-slate-400">{p.period}</p>

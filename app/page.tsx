@@ -3,74 +3,22 @@ import { getAllPosts } from "@/lib/posts";
 
 export default async function Home() {
   const posts = getAllPosts();
+  const displayedPosts = posts.slice(0, 3);
 
-  const fallbackPosts = [
+  const sideProjects = [
     {
-      slug: "shipping-small",
-      title: "Shipping small, thinking bold",
-      summary:
-        "How I break ambitious ideas into daily deliverables, keep momentum, and measure progress without killing the spark.",
-      date: "May 2024",
-      tags: ["build log", "product thinking"],
-    },
-    {
-      slug: "learning-in-public",
-      title: "Learning in public is my edge",
-      summary:
-        "Sharing drafts, screenshots, and half-finished work has opened more doors than polished launches ever did.",
-      date: "April 2024",
-      tags: ["writing", "open work"],
-    },
-    {
-      slug: "design-systems",
-      title: "Design systems for solo makers",
-      summary:
-        "A lightweight system for visuals, tone, and cadence that keeps my projects coherent without slowing me down.",
-      date: "March 2024",
-      tags: ["design", "ops"],
-    },
-  ];
-
-  const displayedPosts = (posts.length ? posts : fallbackPosts).slice(0, 3);
-
-  const focus = [
-    "Building a repeatable content engine that blends posts, photos, and short-form storytelling.",
-    "Designing small, delightful product experiments that teach me something every week.",
-    "Documenting the process so others can shortcut the messy middle of building in public.",
-  ];
-
-  const timeline = [
-    {
-      year: "Now",
-      title: "Senior Software Engineer · MBition",
-      detail: "Building data platforms on Databricks & AWS for 2,000+ teams. Saving $2M/yr in cloud costs. Training autonomous driving AI at scale.",
-    },
-    {
-      year: "2018",
-      title: "Software Engineer · KPIT Technologies",
-      detail: "Led ML video pipeline for BMW scene detection using MASK-RCNN. Built ROS sensor interfaces for lidar, camera, and GPS on prototype vehicles.",
-    },
-    {
-      year: "2016",
-      title: "Master's Candidate · Daimler",
-      detail: "Developed an ML model to predict bus energy consumption using fleet driving data — enabling efficient route planning for Mercedes-Benz customers.",
-    },
-  ];
-
-  const gallery = [
-    {
-      label: "Field notes",
-      detail: "Snapshots from research days and road trips.",
+      label: "Infrastructure AI",
+      detail: "Next-generation infrastructure management using AI agents.",
       accent: "from-cyan-400/40 to-blue-500/30",
     },
     {
-      label: "Studio desk",
-      detail: "Textures, lighting tests, and layout drafts.",
+      label: "Menuop.com",
+      detail: "Digital menu service for restaurants.",
       accent: "from-amber-300/40 to-orange-400/30",
     },
     {
-      label: "Build logs",
-      detail: "Screens from work-in-progress tools and visuals.",
+      label: "Northbots.com",
+      detail: "AI copilots platform for automating business workflows.",
       accent: "from-emerald-300/40 to-teal-400/30",
     },
   ];
@@ -84,21 +32,16 @@ export default async function Home() {
       </div>
 
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 pb-14 pt-10 md:px-10 lg:px-14">
+        {/* Header */}
         <header className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-lg font-semibold uppercase tracking-tight text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] backdrop-blur">
-              FD
+              FT
             </div>
             <div className="space-y-1">
-              <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
-                Personal brand
-              </p>
-              <h1 className="text-2xl font-semibold text-white sm:text-3xl">
-                Fernando Dev
-              </h1>
-              <p className="text-sm text-slate-400">
-                Builder, storyteller, and visual-first maker
-              </p>
+              <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Software Engineer</p>
+              <h1 className="text-2xl font-semibold text-white sm:text-3xl">Fernando Trevino</h1>
+              <p className="text-sm text-slate-400">Data, AI & cloud systems for industry</p>
             </div>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -116,284 +59,133 @@ export default async function Home() {
             </Link>
             <a
               className="rounded-full bg-gradient-to-r from-cyan-300 to-indigo-400 px-4 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-indigo-500/20 transition hover:scale-[1.01]"
-              href="mailto:hello@fernandodev.com"
+              href="mailto:fernando.yanez.trevino@gmail.com"
             >
-              Collaborate
+              Get in touch
             </a>
           </div>
         </header>
 
         <main className="mt-10 flex flex-col gap-10">
+          {/* Hero + Now */}
           <section className="grid gap-6 lg:grid-cols-[1.35fr_1fr]">
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur">
               <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-slate-400">
                 <span className="h-1.5 w-8 rounded-full bg-gradient-to-r from-cyan-300 to-indigo-400" />
-                Building in public
+                Engineering
               </div>
               <h2 className="mt-4 text-3xl font-semibold leading-tight text-white sm:text-4xl">
-                Crafting a brand that feels alive — stories, visuals, and product
-                experiments published every week.
+                Building AI systems for industry — data platforms, autonomous programs, and infrastructure at scale.
               </h2>
-              <p className="mt-4 max-w-3xl text-lg text-slate-300">
-                I share the process, not just the polished result. Expect
-                behind-the-scenes notes, design snapshots, and honest lessons
-                from building real things on the internet.
+              <p className="mt-4 text-lg text-slate-300">
+                I work at the intersection of cloud architecture, ML infrastructure, and platform engineering. I write about what I build.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {["Weekly posts", "Visual storytelling", "Systems for makers"].map(
-                  (item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-100"
-                    >
-                      {item}
-                    </span>
-                  ),
-                )}
-              </div>
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                    cadence
-                  </p>
-                  <p className="mt-2 text-2xl font-semibold text-white">
-                    1x / week
-                  </p>
-                  <p className="text-sm text-slate-400">New essays + build logs</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                    format
-                  </p>
-                  <p className="mt-2 text-2xl font-semibold text-white">
-                    Posts + film
-                  </p>
-                  <p className="text-sm text-slate-400">Words, audio, visuals</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                    focus
-                  </p>
-                  <p className="mt-2 text-2xl font-semibold text-white">
-                    Brand in motion
-                  </p>
-                  <p className="text-sm text-slate-400">
-                    Modern, intentional, alive
-                  </p>
-                </div>
-              </div>
             </div>
             <div className="flex flex-col gap-4">
               <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm uppercase tracking-[0.2em] text-slate-400">
-                    Now
-                  </h3>
+                  <h3 className="text-sm uppercase tracking-[0.2em] text-slate-400">Now</h3>
                   <span className="rounded-full bg-emerald-300/20 px-3 py-1 text-xs font-medium text-emerald-200">
-                    Publishing
+                    Building
                   </span>
                 </div>
-                <p className="mt-3 text-lg font-semibold text-white">
-                  Releasing a series on making a personal brand feel like a product
-                </p>
+                <p className="mt-3 text-lg font-semibold text-white">Lead Architect at Siemens</p>
                 <p className="mt-2 text-slate-300">
-                  I am deconstructing the playbook: audience clarity, visual tone,
-                  consistent voice, and repeatable publishing.
+                  Designing AWS cloud foundations and an AI-first application platform. Also building next-generation infrastructure management using AI privately.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2 text-sm text-slate-400">
-                  <span className="rounded-full bg-white/5 px-3 py-1">
-                    Build log #07 drops Friday
-                  </span>
-                  <span className="rounded-full bg-white/5 px-3 py-1">
-                    3 collaborations open
-                  </span>
+                  <span className="rounded-full bg-white/5 px-3 py-1">Cloud Architecture</span>
+                  <span className="rounded-full bg-white/5 px-3 py-1">AI-first Platform</span>
                 </div>
               </div>
               <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#0e1c3c]/80 via-[#0b1b2f]/70 to-[#0c2539]/80 p-6 backdrop-blur">
-                <h3 className="text-sm uppercase tracking-[0.2em] text-slate-400">
-                  Signal
-                </h3>
-                <p className="mt-3 text-lg font-semibold text-white">
-                  Subscribe to the notebook
-                </p>
+                <h3 className="text-sm uppercase tracking-[0.2em] text-slate-400">Get in touch</h3>
+                <p className="mt-3 text-lg font-semibold text-white">Let's work together</p>
                 <p className="mt-2 text-slate-300">
-                  Get concise recaps of what I shipped, what broke, and what
-                  surprised me each week.
+                  Open to interesting problems in AI, data engineering, and cloud infrastructure.
                 </p>
-                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-                  <input
-                    aria-label="Email"
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-cyan-300 focus:outline-none"
-                    placeholder="your@email.com"
-                    type="email"
+                <a
+                  href="mailto:fernando.yanez.trevino@gmail.com"
+                  className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-300 to-indigo-400 px-5 py-3 text-sm font-semibold text-slate-950 shadow-md shadow-indigo-500/30 transition hover:scale-[1.01]"
+                >
+                  fernando.yanez.trevino@gmail.com →
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* Writing */}
+          <section id="writing" className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur">
+            <div className="flex items-center justify-between">
+              <div className="text-xs uppercase tracking-[0.2em] text-slate-400">Latest writing</div>
+              <Link
+                href="/posts"
+                className="text-xs font-medium text-cyan-300 transition hover:text-cyan-100"
+              >
+                All posts →
+              </Link>
+            </div>
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {displayedPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/posts/${post.slug}`}
+                  className="group block rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-300/60 hover:bg-white/[0.07]"
+                >
+                  <div className="flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-slate-400">
+                    <span>{post.date || "Undated"}</span>
+                    {(post.tags || []).slice(0, 1).map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-white/5 px-2 py-0.5 text-[11px] capitalize text-slate-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="mt-2 text-base font-semibold text-white">{post.title}</h3>
+                  <p
+                    className="mt-2 text-sm text-slate-300"
+                    style={{
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {post.summary}
+                  </p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-cyan-200 transition group-hover:translate-x-1">
+                    Read →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* Side projects */}
+          <section>
+            <div className="mb-4 flex items-center justify-between px-1">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Side projects</p>
+              <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-100">
+                Building
+              </span>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {sideProjects.map((item) => (
+                <div
+                  key={item.label}
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5"
+                >
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-60 blur-3xl transition duration-500 group-hover:opacity-80`}
                   />
-                  <button className="rounded-2xl bg-gradient-to-r from-cyan-300 to-indigo-400 px-5 py-3 text-sm font-semibold text-slate-950 shadow-md shadow-indigo-500/30 transition hover:scale-[1.01]">
-                    Join
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section
-            className="grid gap-6 lg:grid-cols-[1.25fr_1fr]"
-            id="writing"
-          >
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur">
-              <div className="flex items-center justify-between">
-                <div className="text-xs uppercase tracking-[0.2em] text-slate-400">
-                  Latest writing
-                </div>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-200">
-                  Notebook
-                </span>
-              </div>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {displayedPosts.map((post) => (
-                  <article
-                    key={post.slug}
-                    className="group rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-300/60 hover:bg-white/[0.07]"
-                  >
-                    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-slate-400">
-                      <span>{post.date || "Undated"}</span>
-                      <span className="h-[1px] w-8 bg-white/10" />
-                      <div className="flex gap-2">
-                        {(post.tags || []).map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full bg-white/5 px-3 py-1 text-[11px] font-medium capitalize text-slate-200"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <h3 className="mt-2 text-lg font-semibold text-white">
-                      {post.title}
-                    </h3>
-                    <p
-                      className="mt-2 text-sm text-slate-300"
-                      style={{
-                        display: "-webkit-box",
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden",
-                      }}
-                    >
-                      {post.summary}
-                    </p>
-                    <Link
-                      className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-cyan-200 transition group-hover:translate-x-1"
-                      href={`/posts/${post.slug}`}
-                    >
-                      Read story
-                      <span aria-hidden className="text-base">
-                        →
-                      </span>
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            </div>
-            <div className="space-y-5">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-                <h3 className="text-sm uppercase tracking-[0.2em] text-slate-400">
-                  In the lab
-                </h3>
-                <div className="mt-4 space-y-3 text-slate-200">
-                  {focus.map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-gradient-to-r from-cyan-300 to-indigo-400" />
-                      <p className="text-sm text-slate-300">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#0c1c35]/80 via-[#0c1d2f]/70 to-[#0f2436]/80 p-6 backdrop-blur">
-                <h3 className="text-sm uppercase tracking-[0.2em] text-slate-400">
-                  Toolbox
-                </h3>
-                <div className="mt-4 grid gap-3 text-sm text-slate-200">
-                  <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-white/5 px-4 py-3">
-                    <span>Design</span>
-                    <span className="text-slate-400">Figma · Framer · Pen &amp; paper</span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-white/5 px-4 py-3">
-                    <span>Build</span>
-                    <span className="text-slate-400">Next.js · TypeScript · Tailwind</span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-white/5 px-4 py-3">
-                    <span>Media</span>
-                    <span className="text-slate-400">Sony a6400 · Lightroom · Notion</span>
+                  <div className="relative z-10">
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-200">{item.label}</p>
+                    <p className="mt-2 text-sm text-white">{item.detail}</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="grid gap-6 lg:grid-cols-[1fr_1.15fr]">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur">
-              <div className="text-xs uppercase tracking-[0.2em] text-slate-400">
-                Timeline
-              </div>
-              <div className="mt-5 space-y-4">
-                {timeline.map((item) => (
-                  <div
-                    key={item.title}
-                    className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"
-                  >
-                    <div className="mt-1 h-10 w-0.5 rounded-full bg-gradient-to-b from-cyan-300 to-indigo-400" />
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-                        {item.year}
-                      </p>
-                      <h4 className="text-lg font-semibold text-white">
-                        {item.title}
-                      </h4>
-                      <p className="text-sm text-slate-300">{item.detail}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur">
-              <div className="flex items-center justify-between">
-                <div className="text-xs uppercase tracking-[0.2em] text-slate-400">
-                  Visual log
-                </div>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-100">
-                  Photos
-                </span>
-              </div>
-              <p className="mt-3 text-lg font-semibold text-white">
-                Field notes, snapshots, and stills from recent projects.
-              </p>
-              <div className="mt-6 grid gap-4 md:grid-cols-3">
-                {gallery.map((item) => (
-                  <div
-                    key={item.label}
-                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4"
-                  >
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-70 blur-3xl transition duration-500 group-hover:opacity-90`}
-                    />
-                    <div className="relative z-10 flex h-full flex-col justify-between">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.18em] text-slate-200">
-                          {item.label}
-                        </p>
-                        <h4 className="mt-2 text-lg font-semibold text-white">
-                          {item.detail}
-                        </h4>
-                      </div>
-                      <span className="mt-4 text-sm font-semibold text-cyan-100">
-                        View set →
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </section>
         </main>

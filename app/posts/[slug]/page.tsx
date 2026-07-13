@@ -1,5 +1,6 @@
 import { compileMDX } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
+import rehypePrettyCode from "rehype-pretty-code";
 import { getAllPosts, getPostContent } from "@/lib/posts";
 
 type Params = {
@@ -10,8 +11,9 @@ export async function generateStaticParams() {
   return getAllPosts().map(({ slug }) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Params }) {
-  const source = getPostContent(params.slug);
+export async function generateMetadata({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+  const source = getPostContent(slug);
   if (!source) return {};
 
   const { frontmatter } = await compileMDX<{
@@ -30,8 +32,9 @@ export async function generateMetadata({ params }: { params: Params }) {
   };
 }
 
-export default async function PostPage({ params }: { params: Params }) {
-  const source = getPostContent(params.slug);
+export default async function PostPage({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+  const source = getPostContent(slug);
   if (!source) return notFound();
 
   const { content, frontmatter } = await compileMDX<{
@@ -40,7 +43,12 @@ export default async function PostPage({ params }: { params: Params }) {
     tags?: string[];
   }>({
     source,
-    options: { parseFrontmatter: true },
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        rehypePlugins: [[rehypePrettyCode, { theme: "one-dark-pro" }]],
+      },
+    },
   });
 
   return (
@@ -61,7 +69,7 @@ export default async function PostPage({ params }: { params: Params }) {
           </div>
         </div>
         <h1 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">
-          {frontmatter?.title || params.slug}
+          {frontmatter?.title || slug}
         </h1>
         <article className="prose prose-invert prose-h1:text-white prose-a:text-cyan-200 prose-strong:text-white prose-p:text-slate-200 prose-li:text-slate-200 mt-6 max-w-none">
           {content}

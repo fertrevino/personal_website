@@ -3,10 +3,22 @@ export const summary =
 
 export const experience = [
   {
+    company: "Siemens",
+    role: "Lead Architect",
+    location: "Frankfurt · Hybrid",
+    period: "01/2026 – Present",
+    bullets: [
+      "Designing and standardizing AWS cloud foundations and architecture across the organization.",
+      "Defining multi-account strategy to enable scalable, secure, and governed cloud operations at enterprise scale.",
+      "Designing network architecture for large-scale AWS environments.",
+      "Architecting an AI-first application platform to modernize how engineering teams build and deploy software.",
+    ],
+  },
+  {
     company: "MBition — Mercedes Benz Innovation Hub",
     role: "Senior Software Engineer",
     location: "Remote · Berlin",
-    period: "09/2020 – Present",
+    period: "09/2020 – 12/2025",
     bullets: [
       "Architected and co-led development of a data platform in Databricks, Azure and AWS serving 2,000+ teams with custom metrics for project performance management — spawned a new department to integrate global defect data sources.",
       "Led development of a dozen data products measuring project maturity, defects, build times and feature costs across org levels from developers to C-suite.",

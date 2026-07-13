@@ -15,9 +15,9 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fernando Dev — Personal Brand",
+  title: "Fernando Trevino",
   description:
-    "Stories, experiments, and lessons from building products and growing a modern personal brand.",
+    "Lead Architect at Siemens. Specialized in data, AI and cloud systems for industry.",
 };
 
 export default function RootLayout({
