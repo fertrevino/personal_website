@@ -2,19 +2,24 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #050914;
-  --foreground: #e8edf7;
-  --muted: #9eadc7;
-  --card: rgba(255, 255, 255, 0.04);
-  --stroke: rgba(255, 255, 255, 0.08);
-  --accent: #7ee0c9;
-  --accent-strong: #5dd0ff;
+  --background: #08090a;
+  --foreground: #e7e9e4;
+  --muted: #7c8a80;
+  --accent: #46d17a;
+  --accent-2: #f2b544;
+  --stroke: rgba(70, 209, 122, 0.16);
+  --card: #0d100e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-space-grotesk);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-stroke: var(--stroke);
+  --color-card: var(--card);
+  --font-sans: var(--font-jetbrains-mono);
   --font-mono: var(--font-jetbrains-mono);
 }
 
@@ -25,13 +30,10 @@
 }
 
 body {
-  background: radial-gradient(circle at 20% 20%, #0e1c3f 0, transparent 30%),
-    radial-gradient(circle at 80% 0%, #11305b 0, transparent 28%),
-    radial-gradient(circle at 70% 70%, #0c2633 0, transparent 40%),
-    #050914;
+  background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-space-grotesk), "Inter", system-ui, -apple-system,
-    sans-serif;
+  font-family: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Menlo,
+    monospace;
   min-height: 100vh;
 }
 
@@ -40,8 +42,34 @@ a {
 }
 
 ::selection {
-  background: rgba(126, 224, 201, 0.24);
+  background: rgba(70, 209, 122, 0.28);
   color: var(--foreground);
+}
+
+/* Faint CRT scanlines, purely decorative */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-start infinite;
 }
 
 @media print {
@@ -93,10 +121,9 @@ a {
     font-weight: normal !important;
   }
 
-  /* Hide decorative blobs, back button, and avatar */
+  /* Hide decorative overlays and back button */
   .pointer-events-none,
-  header a[href="/"],
-  #resume-avatar {
+  header a[href="/"] {
     display: none !important;
   }
 
@@ -133,23 +160,12 @@ a {
   }
 
   /* Accent color for section labels and role text */
-  [class*="text-cyan"],
-  [class*="text-indigo"] {
+  [class*="text-accent"] {
     color: #0e7490 !important;
   }
 
-  [class*="text-slate-400"] {
+  [class*="text-muted"] {
     color: #64748b !important;
-  }
-
-  [class*="text-slate-300"],
-  [class*="text-slate-200"] {
-    color: #334155 !important;
-  }
-
-  /* Gradient bars — render as solid lines */
-  [class*="bg-gradient"] {
-    background: #0e7490 !important;
   }
 
   /* Avoid page breaks inside individual entries, but allow breaks between them */

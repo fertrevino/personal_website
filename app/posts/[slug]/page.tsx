@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -52,26 +53,32 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
   });
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#050914] via-[#071127] to-[#0c1a37] px-6 py-12 text-slate-50 md:px-10 lg:px-16">
+    <div className="scanlines relative min-h-screen px-6 py-12 md:px-10 lg:px-16">
       <div className="mx-auto max-w-3xl">
-        <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-slate-400">
-          <span>{frontmatter?.date || "Undated"}</span>
-          <span className="h-[1px] w-8 bg-white/10" />
+        <Link
+          href="/posts"
+          className="text-xs text-muted transition hover:text-accent"
+        >
+          ← back to posts
+        </Link>
+        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted">
+          <span>{frontmatter?.date || "undated"}</span>
+          <span className="h-[1px] w-8 bg-stroke" />
           <div className="flex flex-wrap gap-2">
             {(frontmatter?.tags || []).map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-white/5 px-3 py-1 text-[11px] font-medium capitalize text-slate-200"
+                className="rounded border border-stroke px-2 py-0.5 text-[11px] lowercase"
               >
                 {tag}
               </span>
             ))}
           </div>
         </div>
-        <h1 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">
+        <h1 className="mt-4 text-3xl font-semibold sm:text-4xl">
           {frontmatter?.title || slug}
         </h1>
-        <article className="prose prose-invert prose-h1:text-white prose-a:text-cyan-200 prose-strong:text-white prose-p:text-slate-200 prose-li:text-slate-200 mt-6 max-w-none">
+        <article className="prose prose-invert prose-headings:font-semibold prose-a:text-accent prose-strong:text-foreground prose-code:text-accent-2 mt-6 max-w-none font-mono text-foreground prose-p:text-foreground/90 prose-li:text-foreground/90">
           {content}
         </article>
       </div>

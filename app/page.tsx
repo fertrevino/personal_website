@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import { TerminalWindow } from "@/app/components/TerminalWindow";
 
 export default async function Home() {
   const posts = getAllPosts();
@@ -7,145 +8,165 @@ export default async function Home() {
 
   const sideProjects = [
     {
-      label: "Infrastructure AI",
-      detail: "Next-generation infrastructure management using AI agents.",
-      accent: "from-cyan-400/40 to-blue-500/30",
+      name: "Infrastructure AI",
+      status: "active",
+      desc: "Next-generation infrastructure management using AI agents.",
     },
     {
-      label: "Menuop.com",
-      detail: "Digital menu service for restaurants.",
-      accent: "from-amber-300/40 to-orange-400/30",
+      name: "Menuop.com",
+      status: "shipped",
+      desc: "Digital menu service for restaurants.",
+      url: "https://menuop.com",
     },
     {
-      label: "Northbots.com",
-      detail: "AI copilots platform for automating business workflows.",
-      accent: "from-emerald-300/40 to-teal-400/30",
+      name: "Northbots.com",
+      status: "active",
+      desc: "AI copilots platform for automating business workflows.",
+      url: "https://northbots.com",
     },
   ];
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#050914] via-[#071127] to-[#0c1a37] text-slate-50">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/5 top-[-6%] h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl" />
-        <div className="absolute right-[-10%] top-1/4 h-64 w-64 rounded-full bg-indigo-500/10 blur-[120px]" />
-        <div className="absolute left-[8%] bottom-[-8%] h-72 w-72 rounded-full bg-emerald-400/10 blur-[140px]" />
-      </div>
+    <div className="scanlines relative min-h-screen">
+      <div className="relative mx-auto flex min-h-screen max-w-4xl flex-col px-6 pb-16 pt-10 md:px-10">
+        {/* Prompt header */}
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
+          <span className="text-accent">➜</span>
+          <span>~/fernando-trevino</span>
+          <span>git:(</span>
+          <span className="text-accent-2">main</span>
+          <span>)</span>
+          <span className="cursor-blink text-accent">▌</span>
+        </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 pb-14 pt-10 md:px-10 lg:px-14">
-        {/* Header */}
-        <header className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-lg font-semibold uppercase tracking-tight text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] backdrop-blur">
-              FT
-            </div>
-            <div className="space-y-1">
-              <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Software Engineer</p>
-              <h1 className="text-2xl font-semibold text-white sm:text-3xl">Fernando Trevino</h1>
-              <p className="text-sm text-slate-400">Data, AI & cloud systems for industry</p>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <a
-              className="rounded-full border border-white/10 px-4 py-2 text-sm text-slate-100 transition hover:border-white/30 hover:text-white"
-              href="#writing"
-            >
-              Read the latest
-            </a>
-            <Link
-              className="rounded-full border border-white/10 px-4 py-2 text-sm text-slate-100 transition hover:border-white/30 hover:text-white"
-              href="/resume"
-            >
-              Resume
-            </Link>
-            <a
-              className="rounded-full bg-gradient-to-r from-cyan-300 to-indigo-400 px-4 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-indigo-500/20 transition hover:scale-[1.01]"
-              href="mailto:fernando.yanez.trevino@gmail.com"
-            >
-              Get in touch
-            </a>
-          </div>
-        </header>
+        <div className="mt-6">
+          <p className="text-sm">
+            <span className="text-accent">$</span> whoami
+          </p>
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Fernando Trevino
+          </h1>
+          <p className="mt-1 text-muted">
+            Lead Architect @ Siemens — cloud, AI &amp; data infrastructure
+          </p>
+        </div>
 
-        <main className="mt-10 flex flex-col gap-10">
-          {/* Hero + Now */}
-          <section className="grid gap-6 lg:grid-cols-[1.35fr_1fr]">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-slate-400">
-                <span className="h-1.5 w-8 rounded-full bg-gradient-to-r from-cyan-300 to-indigo-400" />
-                Engineering
-              </div>
-              <h2 className="mt-4 text-3xl font-semibold leading-tight text-white sm:text-4xl">
-                Building AI systems for industry — data platforms, autonomous programs, and infrastructure at scale.
-              </h2>
-              <p className="mt-4 text-lg text-slate-300">
-                I work at the intersection of cloud architecture, ML infrastructure, and platform engineering. I write about what I build.
+        {/* Nav */}
+        <nav className="mt-6 flex flex-wrap gap-3 text-sm">
+          <a
+            href="#writing"
+            className="border border-stroke px-4 py-2 transition hover:border-accent hover:text-accent"
+          >
+            <span className="text-accent">[1]</span> Writing
+          </a>
+          <Link
+            href="/resume"
+            className="border border-stroke px-4 py-2 transition hover:border-accent hover:text-accent"
+          >
+            <span className="text-accent">[2]</span> Resume
+          </Link>
+          <a
+            href="mailto:fernando.yanez.trevino@gmail.com"
+            className="border border-stroke px-4 py-2 transition hover:border-accent hover:text-accent"
+          >
+            <span className="text-accent">[3]</span> Contact
+          </a>
+        </nav>
+
+        <main className="mt-10 flex flex-col gap-8">
+          {/* About + Now */}
+          <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
+            <TerminalWindow title="~/about.md">
+              <p className="text-sm text-muted">
+                <span className="text-accent">#</span> building AI systems for
+                industry
               </p>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm uppercase tracking-[0.2em] text-slate-400">Now</h3>
-                  <span className="rounded-full bg-emerald-300/20 px-3 py-1 text-xs font-medium text-emerald-200">
-                    Building
+              <h2 className="mt-3 text-2xl font-semibold leading-snug sm:text-3xl">
+                Data platforms, autonomous programs, and infrastructure at
+                scale.
+              </h2>
+              <p className="mt-4 leading-relaxed text-muted">
+                I work at the intersection of cloud architecture, ML
+                infrastructure, and platform engineering. I write about what
+                I build.
+              </p>
+            </TerminalWindow>
+
+            <div className="flex flex-col gap-6">
+              <TerminalWindow title="~/now.sh">
+                <div className="flex items-center justify-between text-xs text-muted">
+                  <span>status</span>
+                  <span className="flex items-center gap-1.5 text-accent">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                    building
                   </span>
                 </div>
-                <p className="mt-3 text-lg font-semibold text-white">Lead Architect at Siemens</p>
-                <p className="mt-2 text-slate-300">
-                  Designing AWS cloud foundations and an AI-first application platform. Also building next-generation infrastructure management using AI privately.
+                <p className="mt-3 font-semibold">Lead Architect at Siemens</p>
+                <p className="mt-2 text-sm text-muted">
+                  Designing AWS cloud foundations and an AI-first application
+                  platform. Also building next-generation infrastructure
+                  management using AI privately.
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2 text-sm text-slate-400">
-                  <span className="rounded-full bg-white/5 px-3 py-1">Cloud Architecture</span>
-                  <span className="rounded-full bg-white/5 px-3 py-1">AI-first Platform</span>
+                <div className="mt-4 flex flex-wrap gap-2 text-xs text-muted">
+                  <span className="rounded border border-stroke px-2 py-0.5">
+                    cloud architecture
+                  </span>
+                  <span className="rounded border border-stroke px-2 py-0.5">
+                    ai-first platform
+                  </span>
                 </div>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#0e1c3c]/80 via-[#0b1b2f]/70 to-[#0c2539]/80 p-6 backdrop-blur">
-                <h3 className="text-sm uppercase tracking-[0.2em] text-slate-400">Get in touch</h3>
-                <p className="mt-3 text-lg font-semibold text-white">Let's work together</p>
-                <p className="mt-2 text-slate-300">
-                  Open to interesting problems in AI, data engineering, and cloud infrastructure.
+              </TerminalWindow>
+
+              <TerminalWindow title="~/contact.sh">
+                <p className="text-sm">
+                  <span className="text-accent">$</span> mailto --to fernando
+                </p>
+                <p className="mt-2 font-semibold">Let&apos;s work together</p>
+                <p className="mt-2 text-sm text-muted">
+                  Open to interesting problems in AI, data engineering, and
+                  cloud infrastructure.
                 </p>
                 <a
                   href="mailto:fernando.yanez.trevino@gmail.com"
-                  className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-300 to-indigo-400 px-5 py-3 text-sm font-semibold text-slate-950 shadow-md shadow-indigo-500/30 transition hover:scale-[1.01]"
+                  className="mt-4 inline-flex items-center gap-2 border border-accent px-4 py-2 text-sm font-semibold text-accent transition hover:bg-accent hover:text-[#04160c]"
                 >
                   fernando.yanez.trevino@gmail.com →
                 </a>
-              </div>
+              </TerminalWindow>
             </div>
-          </section>
+          </div>
 
           {/* Writing */}
-          <section id="writing" className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur">
-            <div className="flex items-center justify-between">
-              <div className="text-xs uppercase tracking-[0.2em] text-slate-400">Latest writing</div>
-              <Link
-                href="/posts"
-                className="text-xs font-medium text-cyan-300 transition hover:text-cyan-100"
-              >
-                All posts →
+          <TerminalWindow title="~/posts --latest" className="scroll-mt-10">
+            <div id="writing" className="flex items-center justify-between">
+              <p className="text-xs text-muted">
+                <span className="text-accent">$</span> ls posts/ | head -3
+              </p>
+              <Link href="/posts" className="text-xs text-accent hover:underline">
+                all posts →
               </Link>
             </div>
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {displayedPosts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/posts/${post.slug}`}
-                  className="group block rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-300/60 hover:bg-white/[0.07]"
+                  className="group block rounded border border-stroke p-4 transition hover:border-accent"
                 >
-                  <div className="flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-slate-400">
-                    <span>{post.date || "Undated"}</span>
+                  <div className="flex items-center gap-2 text-xs text-muted">
+                    <span>{post.date || "undated"}</span>
                     {(post.tags || []).slice(0, 1).map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-white/5 px-2 py-0.5 text-[11px] capitalize text-slate-300"
+                        className="rounded border border-stroke px-1.5 py-0.5 text-[11px] lowercase"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h3 className="mt-2 text-base font-semibold text-white">{post.title}</h3>
+                  <h3 className="mt-2 text-sm font-semibold">{post.title}</h3>
                   <p
-                    className="mt-2 text-sm text-slate-300"
+                    className="mt-2 text-sm text-muted"
                     style={{
                       display: "-webkit-box",
                       WebkitLineClamp: 2,
@@ -155,39 +176,66 @@ export default async function Home() {
                   >
                     {post.summary}
                   </p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-cyan-200 transition group-hover:translate-x-1">
-                    Read →
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent transition group-hover:translate-x-1">
+                    read →
                   </span>
                 </Link>
               ))}
             </div>
-          </section>
+          </TerminalWindow>
 
-          {/* Side projects */}
-          <section>
-            <div className="mb-4 flex items-center justify-between px-1">
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Side projects</p>
-              <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-100">
-                Building
-              </span>
+          {/* Side projects as a query result */}
+          <TerminalWindow title="~/projects">
+            <p className="text-sm text-muted">
+              <span className="text-accent">$</span> select * from projects;
+            </p>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full min-w-[480px] border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-stroke text-muted">
+                    <th className="py-2 pr-4 font-normal">name</th>
+                    <th className="py-2 pr-4 font-normal">status</th>
+                    <th className="py-2 font-normal">description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sideProjects.map((item) => (
+                    <tr
+                      key={item.name}
+                      className="border-b border-stroke last:border-0"
+                    >
+                      <td className="py-3 pr-4 align-top font-semibold">
+                        {item.url ? (
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline decoration-stroke underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                          >
+                            {item.name}
+                          </a>
+                        ) : (
+                          item.name
+                        )}
+                      </td>
+                      <td
+                        className={`py-3 pr-4 align-top ${
+                          item.status === "active"
+                            ? "text-accent"
+                            : "text-accent-2"
+                        }`}
+                      >
+                        {item.status}
+                      </td>
+                      <td className="py-3 align-top text-muted">
+                        {item.desc}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {sideProjects.map((item) => (
-                <div
-                  key={item.label}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5"
-                >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-60 blur-3xl transition duration-500 group-hover:opacity-80`}
-                  />
-                  <div className="relative z-10">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-200">{item.label}</p>
-                    <p className="mt-2 text-sm text-white">{item.detail}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          </TerminalWindow>
         </main>
       </div>
     </div>
